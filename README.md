@@ -3,6 +3,9 @@ snail-projects
 
 progs for win to ease work
 
+|||||||||||||||||||||||
+autohot scripts
+|||||||||||||||||||||||T
 
-There are bundle of progs and scripts, that i or not i created.
-Use these progs to ease your work and have aa nice day!
+This branch created to help do something automation work you don't like to do so much.
+Feel free to use my ideas to ease you work.
