@@ -1,0 +1,53 @@
+;this is program to lock your screen.
+
+swc=1;
+
+#l::
+{
+swc=0;
+SplashImage, Off
+SplashImage, ,X1 Y0 m b fs40 w1280 h1024 cw5a00ff ct00FF00, `n`n`n`n`n`n`nЭкран заблокирован
+WinSet, Transparent, 150, sl.ahk 
+WinSet, Transparent, 150, sl.exe 
+return
+}
+
+
+;input serial number
+!^f6::
+{
+Gui Destroy 
+Gui, Add, Text,, pass:
+Gui, Add, Edit, vPass ym  ; The ym option starts a new column of controls.
+Gui, Add, Button, default, ОК
+Gui, Show,, input
+WinSet, AlwaysOnTop, on, input 
+return
+ButtonОК:
+Gui, Submit  ; Save the input from the user to each control's associated variable.
+{
+if pass=yui
+{
+SplashImage, Off
+swc=1;
+}
+
+if pass=terminator
+{
+swc=1;
+ExitApp
+}
+
+}
+return
+
+}
+
+
+
+!^)::
+{
+swc=1;
+SplashImage, Off
+return
+}
