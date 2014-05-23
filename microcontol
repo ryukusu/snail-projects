@@ -1,0 +1,79 @@
+; <COMPILER: v1.1.08.01>
+invis:=1
+ivert:=-1
+SoundGet, num,MICROPHONE,MUTE,2
+F12::
+SoundGet, num,MICROPHONE,MUTE,2
+if num=off
+{
+SoundGet, num,MICROPHONE,MUTE,2
+invis:=1
+
+
+IfExist, micron.png
+{
+
+
+SplashImage, Off
+SplashImage, micron.png, X1109 Y160 m b fs18
+WinSet, Transparent, 200, microcontrol.exe 
+
+
+}
+
+IfNotExist,micron.png
+{
+
+
+SplashImage, Off
+SplashImage, ,X1109 Y160 m b fs18 w150 h80 cw5a00ff ct00FF00, Микрофон выключен
+WinSet, Transparent, 150, microcontrol.exe 
+
+}
+
+
+SoundSet, -1, MICROPHONE,MUTE,2
+return
+}
+
+
+if  num=on
+{
+SoundGet, num,MICROPHONE,MUTE,2
+;num:=on
+invis:=1
+
+
+IfExist, microff.png
+{
+SplashImage, Off
+SplashImage, microff.png, X1109 Y160 b m fs18
+WinSet, Transparent, 200, microcontrol.exe 
+}
+
+IfNotExist,micron.png
+{
+SplashImage, Off
+SplashImage,, X1109 Y160 m b fs18 h80 w150 cw50dd50 ct5a00ff, Микрофон включен
+WinSet, Transparent, 150, microcontrol.exe 
+}
+
+
+SoundSet, -1, MICROPHONE,MUTE,2
+return
+}
+
+
+
+
+
+F11::
+if num=on
+{
+SplashImage, Off
+return
+}
+if num=off
+{
+sendraw Sbis123
+}
