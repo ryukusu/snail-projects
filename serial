@@ -1,0 +1,58 @@
+;this program made to enter five cell-block of serial
+clipstore=%clipboard%
+
+
+;input serial number
+!f6::
+{
+Gui Destroy 
+Gui, Add, Text,, serial:
+Gui, Add, Edit, vSerial ym  ; The ym option starts a new column of controls.
+Gui, Add, Button, default, ОК
+Gui, Show,, Please enter serial-code
+return
+ButtonОК:
+Gui, Submit  ; Save the input from the user to each control's associated variable.
+return
+}
+
+
+
+;enter serial number
+!f5::
+{
+StringSplit, cell, serial, `-
+Loop, 5
+{
+clipboard := cell%a_index%
+sleep 200
+send +{ins}
+sleep 200
+;MsgBox, %clipboard%
+}
+sleep 400
+send {enter}
+clipboard =%clipstore%
+return
+}
+
+
+;help menu
+!F1::
+{
+
+SplashImage, Off
+SplashImage, ,X80 Y80 m2 fs18 w500 h500 ce0FFc1 cCCCCCC , Внимание!!! Если у клиента медленное соединение`, то было бы неплохо скинуть программу на компьютер клиента.`nAlt+f6 - Ввести серийник для крипто про. `nAlt+f5 - Заполнить серийник по блокам `nShift+1 - выйти из программы", Справка по использованию программы.
+;WinSet, Transparent, 200, fregat.exe 
+return
+}
+
+
+
+
+!::
+{
+ExitApp
+}
+
+;random serial = 36636-78787-89484-15554-54878
